@@ -1,6 +1,6 @@
 import { EOL, cpus, homedir, userInfo } from 'os';
 
-export const printOSInfo = ([info]) => {
+export const printOSInfo = async([info]) => {
     if (!info) {
         console.log('Invalid input');
         return;

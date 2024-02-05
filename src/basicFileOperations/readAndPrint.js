@@ -15,5 +15,6 @@ export const readAndPrint = async ([fileName]) => {
     readStream.on('end', () => {
         console.log('\n'); 
     });
+
     readStream.pipe(process.stdout);
 }

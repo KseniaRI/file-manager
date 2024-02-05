@@ -9,5 +9,4 @@ export const createEmptyFile = async ([fileName]) => {
     } 
     const filePath = resolve(process.cwd(), fileName);
     await writeFile(filePath, '', { flag: 'wx' }).catch(handleOperationError());
-    
 }

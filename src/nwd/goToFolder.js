@@ -16,6 +16,5 @@ export const goToFolder = ([folderName]) => {
         process.chdir(folderPath);
     } catch (error) {
         handleOperationError();
-    }
-    
+    }   
 }

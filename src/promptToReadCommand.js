@@ -12,9 +12,9 @@ import { calculateHash } from './hashCalc/calculateHash.js';
 import { compressFile } from './zip/compressFile.js';
 import { decompressFile } from './zip/decompressFile.js';
 
-
-export const promptToPrintCommand = async(readLine) => {
-        readLine.question('\nPrint command and wait for result:\n', async(command) => {
+export const promptToPrintCommand = async (readLine) => {
+    readLine.prompt();
+    readLine.on('line', async(command) => {
         const [action, ...parameter] = command.split(' ');
         switch (action.toLowerCase()) {
             case 'up': 
@@ -42,7 +42,7 @@ export const promptToPrintCommand = async(readLine) => {
                 await deleteFile(parameter);
                 break;
             case 'os':
-                printOSInfo(parameter);
+                await printOSInfo(parameter);
                 break;
             case 'hash':
                 await calculateHash(parameter);
@@ -53,11 +53,10 @@ export const promptToPrintCommand = async(readLine) => {
             case 'decompress':
                 await decompressFile(parameter);
                 break;
-            
             default:
                 console.log('Invalid input.');
         }
         printCWD();
-        await promptToPrintCommand(readLine);
+        readLine.prompt();
     })
 }

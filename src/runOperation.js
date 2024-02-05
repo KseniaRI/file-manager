@@ -4,8 +4,9 @@ import { promptToPrintCommand } from "./promptToReadCommand.js";
 
 export const runOperation = async(userName) => {
     const readLine = createInterface({
-       input: process.stdin,
-       output: process.stdout 
+        input: process.stdin,
+        output: process.stdout,
+        prompt: '\nPrint command and wait for result:\n'
     });
     
     await promptToPrintCommand(readLine);

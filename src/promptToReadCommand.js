@@ -7,6 +7,11 @@ import { renameFile } from "./basicFileOperations/renameFile.js";
 import { moveFile } from "./basicFileOperations/moveFile.js";
 import { deleteFile } from "./basicFileOperations/deleteFile.js";
 import { printCWD } from "./printCWD.js";
+import { printOSInfo } from './osInfo/printOSInfo.js';
+import { calculateHash } from './hashCalc/calculateHash.js';
+import { compressFile } from './zip/compressFile.js';
+import { decompressFile } from './zip/decompressFile.js';
+
 
 export const promptToPrintCommand = async(readLine) => {
         readLine.question('\nPrint command and wait for result:\n', async(command) => {
@@ -36,6 +41,19 @@ export const promptToPrintCommand = async(readLine) => {
             case 'rm':
                 await deleteFile(parameter);
                 break;
+            case 'os':
+                printOSInfo(parameter);
+                break;
+            case 'hash':
+                await calculateHash(parameter);
+                break;
+            case 'compress':
+                await compressFile(parameter);
+                break;
+            case 'decompress':
+                await decompressFile(parameter);
+                break;
+            
             default:
                 console.log('Invalid input.');
         }

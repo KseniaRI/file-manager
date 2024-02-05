@@ -1,9 +1,10 @@
 import { readdir, stat } from "fs/promises";
 import { resolve } from "path";
+import { handleOperationError } from "../handleOperationError.js";
 
 export const printList = async() => {
     const currentDir = process.cwd();
-    const dirContents = await readdir(currentDir).catch((err) => console.log(err));
+    const dirContents = await readdir(currentDir).catch(handleOperationError);
     
     try {
         const results = await Promise.all(dirContents.map(async (item) => {
@@ -27,6 +28,6 @@ export const printList = async() => {
             Type: result.type
         })));
     } catch (err) {
-        throw err;
+        handleOperationError();
     }
 }

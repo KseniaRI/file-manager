@@ -1,5 +1,5 @@
 import { homedir } from "os";
-import { printCWD } from "../printCWD.js";
+import { resolve } from "path";
 
 export const goToParentDirectory = () => {
     const currentDir = process.cwd();
@@ -7,5 +7,4 @@ export const goToParentDirectory = () => {
     if (currentDir !== homeDir) {
        process.chdir(resolve(currentDir, '..'));
     } 
-    printCWD();
 }
